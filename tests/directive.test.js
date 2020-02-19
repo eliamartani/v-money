@@ -1,5 +1,5 @@
-import directive from '../src/directive'
+import directive from '../src/directive';
 
-test ('should not throw error on empty config', () => {
-  expect(() => directive({}, {})).not.toThrow()
-})
+test('should not throw error on empty config', () => {
+  expect(() => directive({}, {})).not.toThrow();
+});

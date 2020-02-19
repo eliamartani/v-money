@@ -1,14 +1,10 @@
-const webpack = require.main.require('webpack')
-const path = require('path')
-const {version} = require('../../package.json')
+const webpack = require.main.require('webpack');
+const { version } = require('../../package.json');
 
 module.exports = {
   babel: {
     babelrc: false,
   },
-  // html: {
-  //   template: path.resolve(__dirname, './layout.html')
-  // },
   webpack: {
     devtool: false, // disable source-map
     output: {
@@ -16,8 +12,8 @@ module.exports = {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'proccess.env.VERSION': JSON.stringify(version) // adds MyComponent.version
-      })
-    ]
-  }
-}
+        'proccess.env.VERSION': JSON.stringify(version), // adds MyComponent.version
+      }),
+    ],
+  },
+};

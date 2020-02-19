@@ -18,29 +18,27 @@ For other types of mask, use [vue-the-mask](https://vuejs-tips.github.io/vue-the
 ### A. Globally
 
 ```js
-import Vue from 'vue'
-import money from 'v-money'
+import Vue from 'vue';
+import money from 'v-money';
 
 // register directive v-money and component <money>
-Vue.use(money, {precision: 4})
+Vue.use(money, { precision: 4 });
 ```
 
 ### B. Use as component: https://jsfiddle.net/auom8st8/
 
 ```html
 <template>
-  <div>
-    <money v-model="price" v-bind="money"></money> {{price}}
-  </div>
+  <div><money v-model="price" v-bind="money"></money> {{price}}</div>
 </template>
 
 <script>
-  import {Money} from 'v-money'
+  import { Money } from 'v-money';
 
   export default {
-    components: {Money},
+    components: { Money },
 
-    data () {
+    data() {
       return {
         price: 123.45,
         money: {
@@ -49,28 +47,28 @@ Vue.use(money, {precision: 4})
           prefix: 'R$ ',
           suffix: ' #',
           precision: 2,
-          masked: false
-        }
-      }
-    }
-  }
+          masked: false,
+        },
+      };
+    },
+  };
 </script>
 ```
 
 ### C. Use as directive: https://jsfiddle.net/nj3cLoum/2/
+
 Must use `vmodel.lazy` to bind works properly.
+
 ```html
 <template>
-  <div>
-    <input v-model.lazy="price" v-money="money" /> {{price}}
-  </div>
+  <div><input v-model.lazy="price" v-money="money" /> {{price}}</div>
 </template>
 
 <script>
-  import {VMoney} from 'v-money'
+  import { VMoney } from 'v-money';
 
   export default {
-    data () {
+    data() {
       return {
         price: 123.45,
         money: {
@@ -79,26 +77,26 @@ Must use `vmodel.lazy` to bind works properly.
           prefix: 'R$ ',
           suffix: ' #',
           precision: 2,
-          masked: false /* doesn't work with directive */
-        }
-      }
+          masked: false /* doesn't work with directive */,
+        },
+      };
     },
 
-    directives: {money: VMoney}
-  }
+    directives: { money: VMoney },
+  };
 </script>
 ```
 
 ## Properties
 
-| property  | Required | Type    | Default | Description                                             |
-|-----------|----------|---------|---------|---------------------------------------------------------|
-| precision | **true** | Number  | 2       | How many decimal places                                 |
-| decimal   | false    | String  | "."     | Decimal separator                                       |
-| thousands | false    | String  | ","     | Thousands separator                                     |
-| prefix    | false    | String  | ""      | Currency symbol followed by a Space, like "R$ "         |
-| suffix    | false    | String  | ""      | Percentage for example: " %"                            |
-| masked    | false    | Boolean | false   | If the component output should include the mask or not  |
+| property  | Required | Type    | Default | Description                                            |
+| --------- | -------- | ------- | ------- | ------------------------------------------------------ |
+| precision | **true** | Number  | 2       | How many decimal places                                |
+| decimal   | false    | String  | "."     | Decimal separator                                      |
+| thousands | false    | String  | ","     | Thousands separator                                    |
+| prefix    | false    | String  | ""      | Currency symbol followed by a Space, like "R\$ "       |
+| suffix    | false    | String  | ""      | Percentage for example: " %"                           |
+| masked    | false    | Boolean | false   | If the component output should include the mask or not |
 
 ### References
 
