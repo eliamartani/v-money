@@ -1,9 +1,11 @@
 <template lang="html">
-  <input type="tel"
-         :value="formattedValue"
-         @change="change"
-         v-money="{precision, decimal, thousands, prefix, suffix}"
-         class="v-money" />
+  <input
+    type="tel"
+    :value="formattedValue"
+    @change="change"
+    v-money="{ precision, decimal, thousands, prefix, suffix }"
+    class="v-money"
+  />
 </template>
 
 <script>
@@ -57,7 +59,7 @@ export default {
     value: {
       immediate: true,
       handler(newValue, oldValue) {
-        var formatted = format(newValue, this.$props);
+        const formatted = format(newValue, this.$props);
         if (formatted !== this.formattedValue) {
           this.formattedValue = formatted;
         }
