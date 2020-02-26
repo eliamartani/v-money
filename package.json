@@ -6,13 +6,16 @@
   "scripts": {
     "size": "size-limit",
     "upgrade:check": "ncu",
-    "upgrade:apply": "ncu -a",
-    "dev": "vue build ./src/docs/docs.vue --config ./src/docs/build.config.js --host 0.0.0.0",
-    "build": "vue build ./src/index.js --config ./build.config.js --dist ./dist/ --prod --lib",
+    "upgrade:apply": "ncu -u && npm install",
+    "build": "vue-cli-service build --lib",
+    "test": "jest",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve --open",
+    "build_old": "vue build ./src/index.js --config ./build.config.js --dist ./dist/ --prod --lib",
+    "dev_old": "vue build ./src/docs/docs.vue --config ./src/docs/build.config.js --host 0.0.0.0",
     "docs:build": "vue build ./src/docs/docs.vue --config ./src/docs/build.config.js --dist ./docs/ --prod",
     "docs:serve": "open http://localhost:5000/docs/ && serve ./",
-    "compile": "npm run build -- --disable-compress",
-    "test": "jest"
+    "compile": "npm run build -- --disable-compress"
   },
   "keywords": [
     "vue",
@@ -34,11 +37,24 @@
   "author": "Marcos Neves <marcos.neves@gmail.com> (https://vuejs-tips.github.io/)",
   "license": "MIT",
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.0.2",
+    "@vue/babel-preset-app": "^4.2.2",
+    "@vue/cli-plugin-eslint": "^4.2.2",
+    "@vue/cli-service": "^4.2.2",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
-    "babel-preset-vue-app": "^2.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.2.1",
     "jest": "^25.1.0",
     "npm-check-updates": "^4.0.1",
-    "size-limit": "^4.0.1",
-    "vuetify": "^2.2.13"
+    "prettier": "^1.19.1",
+    "size-limit": "^4.0.2",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify": "^2.2.14"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
   }
 }
