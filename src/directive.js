@@ -16,12 +16,15 @@ const directive = (el, binding) => {
   }
 
   el.oninput = () => {
-    let positionFromEnd = el.value.length - el.selectionEnd;
     el.value = format(el.value, opt);
+
+    let positionFromEnd = el.value.length - el.selectionEnd;
     positionFromEnd = Math.max(positionFromEnd, opt.suffix.length); // right
     positionFromEnd = el.value.length - positionFromEnd;
     positionFromEnd = Math.max(positionFromEnd, opt.prefix.length + 1); // left
+
     setCursor(el, positionFromEnd);
+
     el.dispatchEvent(event('change')); // v-model.lazy
   };
 

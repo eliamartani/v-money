@@ -1,6 +1,6 @@
 import defaults from './options';
 
-const format = (input, opt = defaults) => {
+const format = (input = '', opt = defaults) => {
   if (typeof input === 'number') {
     input = input.toFixed(fixed(opt.precision));
   }
@@ -15,7 +15,7 @@ const format = (input, opt = defaults) => {
   return opt.prefix + negative + joinIntegerAndDecimal(integer, decimal, opt.decimal) + opt.suffix;
 };
 
-const unformat = (input, precision) => {
+const unformat = (input = '', precision) => {
   const negative = input.indexOf('-') >= 0 ? -1 : 1;
   const numbers = onlyNumbers(input);
   const currency = numbersToCurrency(numbers, precision);
@@ -25,9 +25,7 @@ const unformat = (input, precision) => {
 const onlyNumbers = input => toStr(input).replace(/\D+/g, '') || '0';
 
 // Uncaught RangeError: toFixed() digits argument must be between 0 and 20 at Number.toFixed
-const fixed = precision => between(0, precision, 20);
-
-const between = (min, n, max) => Math.max(min, Math.min(n, max));
+const fixed = precision => Math.max(0, Math.min(precision, 20));
 
 const numbersToCurrency = (numbers, precision) => {
   const exp = Math.pow(10, precision);

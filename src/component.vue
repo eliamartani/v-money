@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <input
     type="tel"
     :value="formattedValue"
@@ -58,7 +58,7 @@ export default {
   watch: {
     value: {
       immediate: true,
-      handler(newValue, oldValue) {
+      handler(newValue) {
         const formatted = format(newValue, this.$props);
         if (formatted !== this.formattedValue) {
           this.formattedValue = formatted;
